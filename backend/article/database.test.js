@@ -27,6 +27,18 @@ test("get article", async () => {
   expect(article.content).toEqual(testContent);
 });
 
+
+test("delete article", async () => {
+  expect.assertions(1);
+  await db.Article.destroy({
+    where: {
+      id: 1,
+    },
+  });
+  const article = await db.Article.findByPk(1);
+  expect(article).toBeNull();
+});
+
 test("update article", async () => {
   expect.assertions(3);
   let article = await db.Article.create({
@@ -44,17 +56,6 @@ test("update article", async () => {
 
   expect(article.heading).toEqual(testHeadingNew);
   expect(article.content).toEqual(testContentNew);
-});
-
-test("delete article", async () => {
-  expect.assertions(1);
-  await db.Article.destroy({
-    where: {
-      id: 1,
-    },
-  });
-  const article = await db.Article.findByPk(1);
-  expect(article).toBeNull();
 });
 
 afterAll(async () => {
