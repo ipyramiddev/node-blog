@@ -6,7 +6,7 @@ beforeAll(async () => {
 
 test("create article", async () => {
   expect.assertions(1);
-  const article = await db.Person.create({
+  const article = await db.Article.create({
     id: 1,
     firstName: "Bobbie",
     lastName: "Draper",
@@ -16,19 +16,19 @@ test("create article", async () => {
 
 test("get article", async () => {
   expect.assertions(2);
-  const article = await db.Person.findByPk(1);
+  const article = await db.Article.findByPk(1);
   expect(article.firstName).toEqual("Bobbie");
   expect(article.lastName).toEqual("Draper");
 });
 
 test("delete article", async () => {
   expect.assertions(1);
-  await db.Person.destroy({
+  await db.Article.destroy({
     where: {
       id: 1,
     },
   });
-  const article = await db.Person.findByPk(1);
+  const article = await db.Article.findByPk(1);
   expect(article).toBeNull();
 });
 
