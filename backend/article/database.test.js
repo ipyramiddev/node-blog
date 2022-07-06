@@ -41,7 +41,7 @@ test("delete article", async () => {
 
 test("update article", async () => {
   expect.assertions(3);
-  const article = await db.Article.create({
+  let article = await db.Article.create({
     id: 2,
     heading: testHeading,
     content: testContent,
