@@ -36,8 +36,10 @@ test("update article", async () => {
   });
   expect(article.id).toEqual(1);
   article = await db.Article.update({  heading: testHeadingNew, content: testContentNew }, 
-  where: {
-      id: 1,
+  {
+    where: {
+        id: 1,
+    }
   });
 
   expect(article.heading).toEqual(testHeadingNew);
