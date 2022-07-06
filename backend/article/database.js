@@ -13,14 +13,21 @@ const sequelize = new Sequelize(
   }
 );
 const Article = sequelize.define("Article", {
-  firstName: {
-    type: Sequelize.STRING,
+  heading: {
+    type: Sequelize.STRING(256),
     allowNull: false,
   },
-  lastName: {
-    type: Sequelize.STRING,
+  content: {
+    type: Sequelize.STRING(10000),
     allowNull: true,
   },
+  createdAt: { type: Sequelize.DATE, field: 'created_at' },
+  updatedAt: { type: Sequelize.DATE, field: 'updated_at' },
+
+},
+{
+    timestamps: true,
+    underscored: true
 });
 module.exports = {
   sequelize: sequelize,

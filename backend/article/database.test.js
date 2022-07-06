@@ -1,5 +1,11 @@
 const db = require("./database");
 
+const testHeading = "About Nodejs"
+const testContent = "As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications."
+
+const testHeadingNew = "About Golang"
+const testContentNew = "Go, also known as Golang, is an open-source, compiled, and statically typed programming language designed by Google."
+
 beforeAll(async () => {
   await db.sequelize.sync({ force: true });
 });
@@ -8,8 +14,8 @@ test("create article", async () => {
   expect.assertions(1);
   const article = await db.Article.create({
     id: 1,
-    firstName: "Bobbie",
-    lastName: "Draper",
+    heading: testHeading,
+    content: testContent,
   });
   expect(article.id).toEqual(1);
 });
@@ -17,8 +23,26 @@ test("create article", async () => {
 test("get article", async () => {
   expect.assertions(2);
   const article = await db.Article.findByPk(1);
-  expect(article.firstName).toEqual("Bobbie");
-  expect(article.lastName).toEqual("Draper");
+  expect(article.heading).toEqual(testHeading);
+  expect(article.content).toEqual(testContent);
+});
+
+test("update article", async () => {
+  expect.assertions(3);
+  let article = await db.Article.create({
+    id: 1,
+    heading: testHeading,
+    content: testContent,
+  });
+  expect(article.id).toEqual(1);
+  article = await db.Article.update({
+    { heading: testHeadingNew, content: testContentNew },
+    where: {
+      id: 1,
+    }
+  });
+  expect(article.heading).toEqual(testHeadingNew);
+  expect(article.content).toEqual(testContentNew);
 });
 
 test("delete article", async () => {

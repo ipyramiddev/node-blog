@@ -4,8 +4,8 @@ var db = require("../database");
 
 router.get("/all", function (req, res) {
   db.Article.findAll()
-    .then((persons) => {
-      res.status(200).send(JSON.stringify(persons));
+    .then((articles) => {
+      res.status(200).send(JSON.stringify(articles));
     })
     .catch((err) => {
       res.status(500).send(JSON.stringify(err));
@@ -14,8 +14,8 @@ router.get("/all", function (req, res) {
 
 router.get("/:id", function (req, res) {
   db.Article.findByPk(req.params.id)
-    .then((person) => {
-      res.status(200).send(JSON.stringify(person));
+    .then((article) => {
+      res.status(200).send(JSON.stringify(article));
     })
     .catch((err) => {
       res.status(500).send(JSON.stringify(err));
@@ -24,12 +24,35 @@ router.get("/:id", function (req, res) {
 
 router.put("/", function (req, res) {
   db.Article.create({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    heading: req.body.heading,
+    content: req.body.content,
     id: req.body.id,
   })
-    .then((person) => {
-      res.status(200).send(JSON.stringify(person));
+    .then((article) => {
+      res.status(200).send(JSON.stringify(article));
+    })
+    .catch((err) => {
+      res.status(500).send(JSON.stringify(err));
+    });
+});
+
+router.post("/:id", function (req, res) {
+
+  const { heading, content } = req.body || {};
+
+  if (!heading || !content) {
+    res.status(400).send({ message: 'Article heading and content are required.' });
+    return;
+  }
+
+  db.Article.update({
+    { heading: heading, content: content },
+    where: {
+      id: req.params.id,
+    }
+  })
+    .then((article) => {
+      res.status(200).send(JSON.stringify(article));
     })
     .catch((err) => {
       res.status(500).send(JSON.stringify(err));
