@@ -45,11 +45,9 @@ router.post("/:id", function (req, res) {
     return;
   }
 
-  db.Article.update({
-    { heading: heading, content: content },
-    where: {
+  db.Article.update({  heading: heading, content: content }, 
+  where: {
       id: req.params.id,
-    }
   })
     .then((article) => {
       res.status(200).send(JSON.stringify(article));
