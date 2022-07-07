@@ -5,9 +5,14 @@ A simple blog website in NodeJs
 # Run
 
 ```
-docker pull kimirosato/dockerizing-nodejs-node-blog:latest
-docker run -it -p 3000:3000 kimirosato/dockerizing-nodejs-node-blog
+docker-compose up --build
+docker-compose run api npm run migrate
 ```
+# Visual
+
+![Home page](home.png)
+![Update page](update.png)
+
 # Project archetecture
 
 ## Backend
@@ -20,10 +25,10 @@ docker run -it -p 3000:3000 kimirosato/dockerizing-nodejs-node-blog
 ### Routes
 
 - /articles - GET return a list of articles
-- /article/:id - GET return the article
-- /article/:id - POST create article
-- /article/:id - PUT update article
-- /article/:id - DELETE delete article
+- /articles/:id - GET return the article
+- /articles/:id - POST create article
+- /articles/:id - PUT update article
+- /articles/:id - DELETE delete article
 
 ### Docker
 
