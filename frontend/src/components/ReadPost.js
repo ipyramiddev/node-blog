@@ -10,10 +10,8 @@ const ReadPost = () => {
   let { articleId } = useParams();
   const [article, setArticle] = React.useState({})
 
-console.log("articleId", articleId)
   React.useEffect(() => {
     getArticleById(articleId).then((arc) => {
-console.log("arc", arc)
 
       setArticle(arc)
     })

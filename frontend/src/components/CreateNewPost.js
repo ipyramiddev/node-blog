@@ -14,7 +14,6 @@ const CreateNewPost = (props) => {
   const handleSubmit = async(headerData, contentData)=>{
     
     const id = await createArticle(headerData, contentData)
-    console.log('id', id)
 
     if (id) {
       navigate(`/article/${id}`)
@@ -28,7 +27,7 @@ const CreateNewPost = (props) => {
     {
       article ?
       <>
-        <h2>Modify Post</h2>
+        <h2>Create Post</h2>
         <label className="col-sm-12 col-form-label">
           <b>Title</b>
           <input

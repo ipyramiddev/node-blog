@@ -19,7 +19,6 @@ export const getAllArticles = async () => {
 export const getArticleById = async (id) => {
   try {
     const response = await axios.get(`${baseApiEndpoint}/articles/${id}`);
-    console.log("response", response)
     if (response.data) {
         return response.data
     }
@@ -46,10 +45,9 @@ export const deleteArticleById = async (id) => {
 export const updateArticleById = async (id, heading, content) => {
   try {
     const response = await axios.post(`${baseApiEndpoint}/articles/${id}`, {heading: heading, content: content});
-    console.log(response)
     if (response) {
       if (response.status === 200) {
-        return response.data[0]
+        return response.data[1].id
       }
     }
     return null;

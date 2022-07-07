@@ -103,11 +103,9 @@ const DisplayAllPosts = () => {
   // function 8 (to delete posts)
   const deletePost = async (id) => {
     const delstatus = await deleteArticleById(id)
-        console.log("delstatus", delstatus)
     
     if (delstatus) {
       getAllArticles().then((data) => {
-        console.log("After del successful", data)
       dispatch(allArticles(data))
     })
     }
@@ -158,7 +156,6 @@ const DisplayAllPosts = () => {
     );
   }
 
-console.log("allPosts", allPosts)
   return (
     <>
       <h2>All Posts</h2>

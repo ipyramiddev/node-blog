@@ -24,7 +24,6 @@ const ModifyPost = (props) => {
   const handleSubmit = async (headerData, contentData)=> {
     const id = await updateArticleById(articleId, headerData, contentData)
 
-console.log("id", id)
     if (id) {
       navigate(`/article/${id}`)
     } else {
