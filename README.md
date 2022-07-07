@@ -2,6 +2,12 @@
 
 A simple blog website in NodeJs
 
+# Run
+
+```
+docker pull kimirosato/dockerizing-nodejs-node-blog:latest
+docker run -it -p 3000:3000 kimirosato/dockerizing-nodejs-node-blog
+```
 # Project archetecture
 
 ## Backend

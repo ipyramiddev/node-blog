@@ -13,6 +13,11 @@ const sequelize = new Sequelize(
   }
 );
 const Article = sequelize.define("Article", {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },    
   heading: {
     type: Sequelize.STRING(256),
     allowNull: false,

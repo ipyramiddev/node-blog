@@ -1,7 +1,7 @@
-FROM registry.semaphoreci.com/node:16
+FROM node:16.15-alpine3.14
 RUN mkdir -p /opt/app
 WORKDIR /opt/app
-RUN adduser app
+RUN adduser -S app
 COPY article/ .
 RUN npm install
 RUN npm install --save pm2

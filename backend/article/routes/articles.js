@@ -26,7 +26,6 @@ router.put("/", function (req, res) {
   db.Article.create({
     heading: req.body.heading,
     content: req.body.content,
-    id: req.body.id,
   })
     .then((article) => {
       res.status(200).send(JSON.stringify(article));
@@ -49,7 +48,9 @@ router.post("/:id", function (req, res) {
   {
     where: {
         id: req.params.id,
-    }
+    },
+    returning: true,
+    plain: true
   })
     .then((article) => {
       res.status(200).send(JSON.stringify(article));
