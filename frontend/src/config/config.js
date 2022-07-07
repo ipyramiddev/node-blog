@@ -1,0 +1,1 @@
+export const baseApiEndpoint = "http://localhost:3000"

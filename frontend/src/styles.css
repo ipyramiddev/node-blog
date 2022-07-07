@@ -1,0 +1,74 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  padding-top: 4px;
+}
+
+h2 {
+  text-align: center;
+  color: purple;
+}
+
+h3 {
+  color: white;
+}
+
+li {
+  color: grey;
+  margin: 12px;
+}
+
+hr.new1 {
+  border-top: 1px dashed grey;
+}
+
+.button-edits {
+  margin: 40px;
+}
+
+.card-width {
+  color: white;
+  padding: 20px;
+  margin: 40px;
+}
+
+.create-post {
+  margin-top: 0;
+}
+
+.edit-button {
+  position: absolute;
+  top: 20px;
+  right: 55px;
+  color: cyan;
+}
+
+.delete-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: cyan;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 545px;
+  left: 90px;
+}
+
+.cancel-update-button {
+  position: absolute;
+  top: 545px;
+  left: 160px;
+}
+
+.button-css:active {
+  transform: translateY(3px);
+}
+
+.button-css:focus {
+  outline: 0;
+}
