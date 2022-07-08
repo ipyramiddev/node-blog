@@ -8,6 +8,8 @@ A simple blog website in NodeJs
 docker-compose up --build
 docker-compose run api npm run migrate
 ```
+Server runs on http://localhost:3000
+Client runs on http://localhost:5000
 # Visual
 
 ![Home page](home.png)
